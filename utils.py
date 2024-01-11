@@ -24,6 +24,7 @@ def load_model(input_shape, n_classes, model_path):
 
     # Group the convolutional base and new fully-connected layers into a Model object.
     model = Model(inputs=inputs, outputs=output_layer)
+    model.trainable = False
     model.load_weights(model_path)
 
     return model
