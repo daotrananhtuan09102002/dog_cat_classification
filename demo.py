@@ -14,7 +14,7 @@ def upload_image(img_file):
         img = img.resize((224, 224))
         img = img_to_array(img)
         img = np.expand_dims(img, axis=0)
-        st.sidebar.image(img_file, caption="Uploaded Image", use_column_width=True)
+        st.image(img_file, caption="Uploaded Image", use_column_width=True)
         return img
     return None
 
@@ -33,9 +33,9 @@ if __name__ == "__main__":
         prediction = model.predict(img, verbose=0)
         pred_class = np.argmax(prediction)
         if pred_class == 0:
-            st.sidebar.subheader("Prediction: Cat")
+            st.subheader("Prediction: Cat")
         else:
-            st.sidebar.subheader("Prediction: Dog")
+            st.subheader("Prediction: Dog")
         
 
 
