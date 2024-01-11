@@ -22,7 +22,6 @@ def upload_image(img_file):
 if __name__ == "__main__":
     model = utils.load_model((224, 224, 3), 2, "./model.h5")
 
-    st.sidebar.title("Demo")
     st.sidebar.subheader("Step 1: Upload your image")
     img_file = st.sidebar.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
@@ -33,9 +32,9 @@ if __name__ == "__main__":
         prediction = model.predict(img, verbose=0)
         pred_class = np.argmax(prediction)
         if pred_class == 0:
-            st.subheader("Prediction: Cat")
+            st.sidebar.subheader("Prediction: Cat")
         else:
-            st.subheader("Prediction: Dog")
+            st.sidebar.subheader("Prediction: Dog")
         
 
 
