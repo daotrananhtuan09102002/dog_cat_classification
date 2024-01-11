@@ -33,8 +33,6 @@ def load_model(input_shape, n_classes, model_path):
 def dataloader(path, batch_size):
     ds = tf.keras.preprocessing.image_dataset_from_directory(
         path,
-        validation_split=1,
-        subset="validation",
         seed=123,
         image_size=(224, 224),
         batch_size=batch_size)
@@ -43,7 +41,7 @@ def dataloader(path, batch_size):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_path", type=str, required=True, help="Path to the test set folder")
-    parser.add_argument("--batch_size", type=int, required=True, help="Batch size")
+    parser.add_argument("--batch_size", type=int, required=True, help="Batch size", default=32)
     parser.add_argument("--model_path", type=str, required=False, default="./model.h5", help="Path to the model.h5")
     args = parser.parse_args()
 
