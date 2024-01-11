@@ -48,6 +48,9 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, required=True, help="Batch size", default=32)
     parser.add_argument("--model_path", type=str, required=False, default="./model.h5", help="Path to the model.h5")
     args = parser.parse_args()
+    # enable GPU
+    physical_devices = tf.config.list_physical_devices('GPU')
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
     ds = dataloader(args.dataset_path, args.batch_size)
     model = load_model((224, 224, 3), 2, args.model_path)
