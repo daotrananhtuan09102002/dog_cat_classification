@@ -14,6 +14,7 @@ def upload_image(img_file):
         img = img.resize((224, 224))
         img = img_to_array(img)
         img = np.expand_dims(img, axis=0)
+        st.sidebar.image(img_file, caption="Uploaded Image", use_column_width=True)
         return img
     return None
 
