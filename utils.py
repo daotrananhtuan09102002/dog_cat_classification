@@ -34,6 +34,7 @@ def dataloader(path, batch_size):
     ds = tf.keras.preprocessing.image_dataset_from_directory(
         path,
         seed=123,
+        label_mode='categorical',
         image_size=(224, 224),
         batch_size=batch_size)
     return ds
