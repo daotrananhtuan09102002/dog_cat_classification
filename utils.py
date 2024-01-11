@@ -37,6 +37,9 @@ def dataloader(path, batch_size):
         label_mode='categorical',
         image_size=(224, 224),
         batch_size=batch_size)
+    
+    AUTOTUNE = tf.data.AUTOTUNE
+    ds = ds.prefetch(buffer_size=AUTOTUNE)
     return ds
 
 if __name__ == "__main__":
